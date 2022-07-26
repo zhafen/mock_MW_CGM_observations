@@ -1,0 +1,250 @@
+########################################################################
+[DEFAULT]
+########################################################################
+
+# Project tag
+tag = MWCGM
+
+## System dependent
+
+# Stampede2
+# system_data_dir = /scratch/03057/zhafen
+# fire_dir = /scratch/projects/xsede/GalaxiesOnFIRE
+# firefly_dir = /scratch/03057/zhafen/firefly_repos/baryon-cycle
+# archive_dir = ranch.tacc.utexas.edu:/stornext/ranch_01/ranch/users/03057/zhafen/${tag}_data
+# root_paper_dir = /home1/03057/zhafen/papers
+
+# Zach's macbook
+system_data_dir = /Users/zhafen/Data
+fire_dir = ${system_data_dir}/FIRE
+firefly_dir = ${system_data_dir}/firefly/MW-sightlines
+archive_dir = ranch.tacc.utexas.edu:/stornext/ranch_01/ranch/users/03057/zhafen/${tag}_data
+root_paper_dir = /Users/zhafen/paper_repos
+
+## System independent
+
+# Filetree
+root_data_dir = ${system_data_dir}/${tag}_data
+paper_dir = ${root_paper_dir}/mock-MW-CGM-observations
+code_dir = ${paper_dir}/analysis
+figure_dir = ${paper_dir}/figures
+processed_data_dir = ${paper_dir}/data
+
+# Presentation
+figure_width = 3.376 # Default figure width in inches; MNRAS column width
+max_figure_height = 9.437 # Text height for MNRAS
+large_fontsize = 14.4
+normal_fontsize = 12
+small_fontsize = 10.95
+footnote_fontsize = 10
+lighter_textcolor = '0.4'
+lightest_textcolor = '0.6'
+limits_whitespace = 0.05
+
+# Analysis parameters
+snum = 600
+sun_galactocentric_radius = 8. # In kpc
+pathlength = 300 # In kpc
+
+########################################################################
+[SCRIPTS]
+########################################################################
+# This section named "[SCRIPTS]" contains code that will be run.
+# Code will be run in order listed.
+# The prefix determines how the code will be handled.
+
+# Generate sightlines
+nb.1 = ${code_dir}/generate_sightlines.ipynb
+
+# Archive data
+py.13 = ${code_dir}/archive.py
+
+# Retrieve data
+py.14 = ${code_dir}/retrieve.py
+ 
+########################################################################
+[DATA PRODUCTS]
+########################################################################
+# This section helps convert existing pipelines to trove pipelines.
+# In particular it will check if the data products exist and mark that part
+# of the trove as complete if they do.
+
+nb.1 = executed_generate_sightlines.ipynb
+
+########################################################################
+# Parameter Variations
+########################################################################
+# These sections are variations on the parameters to explore.
+# Each will create a trove of data.
+# The section name should be the identifier you would
+# like to use for that set of parameters.
+
+# Hydro
+########################################################################
+
+[m12i]
+subpath = core/m12i_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m12m]
+subpath = core/m12m_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11a]
+subpath = core/m11a_res2100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11b]
+subpath = core/m11b_res2100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11c]
+subpath = core/m11c_res2100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+# Metal Diffusion
+########################################################################
+
+[m12i_md]
+subpath = metal_diffusion/m12i_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m12r_md]
+subpath = metal_diffusion/m12r_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m12w_md]
+subpath = metal_diffusion/m12w_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+ 
+[m12f_md]
+subpath = metal_diffusion/m12f_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m12z_md]
+subpath = metal_diffusion/m12z_res4200
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+# m12z snapshot 456 is corrupted. The below location contains a snapshot 456
+# that is a duplicate of snapshot 455
+# sim_data_dir = ${system_data_dir}/${subpath}/output
+
+[m12c_md]
+subpath = metal_diffusion/m12c_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m12b_md]
+subpath = metal_diffusion/m12b_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11d_md]
+subpath = metal_diffusion/m11d_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11e_md]
+subpath = metal_diffusion/m11e_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11h_md]
+subpath = metal_diffusion/m11h_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11i_md]
+subpath = metal_diffusion/m11i_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+[m11q_md]
+subpath = metal_diffusion/m11q_res7100
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/output
+
+# Cosmic Rays
+########################################################################
+
+[m12i_cr]
+subpath = cr_suite/m12i_mass7000_MHDCR_tkFIX
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${fire_dir}/${subpath}/cr_700/output
+
+# MHDCV
+########################################################################
+
+[m12i_mhdcv]
+subpath = multiphysics/m12i_res7100_mhdcv
+halo_data_dir = ${system_data_dir}/halo_files/${subpath}
+rockstar_data_dir = ${fire_dir}/${subpath}/halo/rockstar_dm/catalog_hdf5
+sim_data_dir = ${system_data_dir}/${subpath}/output
+
+########################################################################
+# Global variations
+########################################################################
+
+# # Change the central indices
+# [relative_to_accretion]
+# global = True
+
+########################################################################
+[EXECUTE]
+########################################################################
+
+scripts = [
+    'nb.1', # Generate sightlines
+    ]
+
+variations = [
+    'm12i',
+    # 'm12m',
+    # 'm11a',
+    # 'm11b',
+    # 'm11c',
+    # 'm12i_md',
+    # 'm12r_md',
+    # 'm12w_md',
+    # 'm12f_md',
+    # 'm12z_md',
+    # 'm12c_md',
+    # 'm12b_md',
+    # 'm11d_md',
+    # 'm11e_md',
+    # 'm11h_md',
+    # 'm11i_md',
+    # 'm11q_md',
+    # 'm12i_cr',
+    ]
+
+global_variations = [
+    '',
+    ]
