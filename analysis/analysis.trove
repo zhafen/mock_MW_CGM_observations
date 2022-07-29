@@ -43,7 +43,7 @@ limits_whitespace = 0.05
 
 # Analysis parameters
 snum = 600
-sun_galactocentric_radius = 8. # In kpc
+sun_galactocentric_radius = 800. # In kpc
 pathlength = 300 # In kpc
 
 ########################################################################
@@ -55,6 +55,9 @@ pathlength = 300 # In kpc
 
 # Generate sightlines
 nb.1 = ${code_dir}/generate_sightlines.ipynb
+
+# Sky map
+nb.2 = ${code_dir}/fullskymap.ipynb
 
 # Archive data
 py.13 = ${code_dir}/archive.py
@@ -70,6 +73,7 @@ py.14 = ${code_dir}/retrieve.py
 # of the trove as complete if they do.
 
 nb.1 = executed_generate_sightlines.ipynb
+nb.2 = executed_fullskymap.ipynb
 
 ########################################################################
 # Parameter Variations
@@ -222,6 +226,7 @@ sim_data_dir = ${system_data_dir}/${subpath}/output
 
 scripts = [
     'nb.1', # Generate sightlines
+    'nb.2', # Full sky map
     ]
 
 variations = [
