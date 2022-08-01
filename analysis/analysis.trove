@@ -17,7 +17,7 @@ tag = MWCGM
 # Zach's macbook
 system_data_dir = /Users/zhafen/Data
 fire_dir = ${system_data_dir}/FIRE
-firefly_dir = ${system_data_dir}/firefly/MW-sightlines
+firefly_dir = ${system_data_dir}/firefly/MW-sightlines/src/firefly/static/data/interface_observations
 archive_dir = ranch.tacc.utexas.edu:/stornext/ranch_01/ranch/users/03057/zhafen/${tag}_data
 root_paper_dir = /Users/zhafen/paper_repos
 
@@ -43,8 +43,23 @@ limits_whitespace = 0.05
 
 # Analysis parameters
 snum = 600
-sun_galactocentric_radius = 800. # In kpc
+sun_galactocentric_radius = 8. # In kpc
 pathlength = 300 # In kpc
+ions = [
+    'H I',
+    # 'O I',
+    # 'C II',
+    # 'C III',
+    'C IV',
+    # 'N II',
+    # 'N III',
+    # 'Si II',
+    # 'Si III',
+    # 'Si IV',
+    # 'N V',
+    'O VI',
+    'Mg II'
+    ]
 
 ########################################################################
 [SCRIPTS]
@@ -58,6 +73,9 @@ nb.1 = ${code_dir}/generate_sightlines.ipynb
 
 # Sky map
 nb.2 = ${code_dir}/fullskymap.ipynb
+
+# firefly
+nb.3 = ${code_dir}/firefly.ipynb
 
 # Archive data
 py.13 = ${code_dir}/archive.py
@@ -74,6 +92,7 @@ py.14 = ${code_dir}/retrieve.py
 
 nb.1 = executed_generate_sightlines.ipynb
 nb.2 = executed_fullskymap.ipynb
+nb.3 = executed_firefly.ipynb
 
 ########################################################################
 # Parameter Variations
@@ -227,6 +246,7 @@ sim_data_dir = ${system_data_dir}/${subpath}/output
 scripts = [
     'nb.1', # Generate sightlines
     'nb.2', # Full sky map
+    'nb.3', # Firefly
     ]
 
 variations = [
